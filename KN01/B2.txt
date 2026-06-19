@@ -1,0 +1,11 @@
+1. Was kann ein Angreifer tun, wenn er den Session-Cookie eines anderen Benutzers kennt?
+
+Er kann die Sitzung des Benutzers übernehmen und sich als dieser Benutzer ausgeben, ohne das Passwort zu kennen.
+
+2. Was bewirkt das HttpOnly-Flag?
+
+Ein Cookie mit HttpOnly kann nicht über JavaScript ausgelesen werden. Dadurch kann ein XSS-Angriff den Session-Cookie nicht stehlen.
+
+3. Warum ist localStorage gefährlich für Session-Cookies?
+
+Daten im localStorage können von JavaScript gelesen werden. Bei einem XSS-Angriff kann ein Angreifer den Session-Token auslesen und die Sitzung übernehmen. HttpOnly-Cookies sind dagegen besser geschützt.

@@ -1,0 +1,15 @@
+1. Warum funktioniert der Payload trotz blockiertem <script>?
+
+Der Payload nutzt kein <script>, sondern das onerror-Event eines Bildes. Der Browser führt den JavaScript-Code aus, wenn das Bild nicht geladen werden kann.
+
+2. Warum ist es gefährlich, dass der Payload auch beim Verteidiger läuft?
+
+Weil der Schadcode gespeichert wurde (Stored XSS) und bei jedem Benutzer ausgeführt wird, der die Seite besucht.
+
+3. Welche OWASP Top 10 Kategorie beschreibt Stored XSS?
+
+A05:2025 – Injection
+
+4. Wie hätte die Anwendung den Angriff verhindern können?
+
+Durch Output Encoding. Sonderzeichen wie < und > müssen maskiert werden, damit der Browser die Eingabe als Text statt als HTML/JavaScript behandelt.
