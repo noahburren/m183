@@ -10,7 +10,7 @@ In diesem Kompetenznachweis wurden verschiedene Verfahren und Konzepte der moder
 
 ## Login-Seite
 
-![Login](images/A-Login.png)
+![Login](./A-Login.png)
 
 Die Loginseite wurde erfolgreich auf der EC2-Instanz bereitgestellt.
 
@@ -18,7 +18,7 @@ Die Loginseite wurde erfolgreich auf der EC2-Instanz bereitgestellt.
 
 ## Erfolgreicher Login
 
-![Login erfolgreich](images/A-Success.png)
+![Login erfolgreich](./A-Success.png)
 
 Nach dem Brute-Force-Angriff konnte das gefundene Passwort erfolgreich verwendet werden.
 
@@ -26,7 +26,7 @@ Nach dem Brute-Force-Angriff konnte das gefundene Passwort erfolgreich verwendet
 
 ## Brute-Force-Ausgabe
 
-![Brute Force](images/A-Hack.png)
+![Brute Force](./A-Hack.png)
 
 ### Schriftliche Antworten
 
@@ -51,7 +51,7 @@ Es handelt sich um ein häufig verwendetes Wörterbuchwort. Solche Passwörter b
 
 ## Konsolenausgabe
 
-![AES](images/B.png)
+![AES](./B.png)
 
 ### Schriftliche Antworten
 
@@ -77,7 +77,7 @@ Der Vorteil gegenüber AES-CBC besteht darin, dass GCM neben der Vertraulichkeit
 
 ## OpenSSL-Ausgabe
 
-![OpenSSL](images/C.png)
+![OpenSSL](./C.png)
 
 ### Schriftliche Antworten
 
@@ -108,7 +108,7 @@ Die selbst erstellte Root-CA befindet sich nicht im Vertrauensspeicher des Brows
 
 ## Zertifikatsdialog
 
-![Zertifikat](images/D-Zertifikat.png)
+![Zertifikat](./D-Zertifikat.png)
 
 ### Schriftliche Antworten
 
@@ -141,7 +141,7 @@ Anschliessend erfolgt die eigentliche Datenübertragung mit einer schnellen symm
 
 ## Nmap
 
-![Nmap](images/E-Nmap.png)
+![Nmap](./E-Nmap.png)
 
 ### Frage
 
@@ -159,7 +159,7 @@ Ein Angreifer erkennt bereits offene Ports, eingesetzte Softwareversionen sowie 
 
 ## HTTP mit tcpdump
 
-![HTTP](images/E-HTTP.png)
+![HTTP](./E-HTTP.png)
 
 ### Fragen
 
@@ -181,7 +181,7 @@ Ein Angreifer müsste sich mittels **ARP-Spoofing** bzw. eines **Man-in-the-Midd
 
 ## HTTPS mit tcpdump
 
-![HTTPS](images/E-HTTPS.png)
+![HTTPS](./E-HTTPS.png)
 
 ### Fragen
 
@@ -209,7 +209,7 @@ Verschlüsselt wird ausschliesslich der Inhalt der Verbindung.
 
 ## Ausgabe
 
-![MD5](images/F-MD5.png)
+![MD5](./F-MD5.png)
 
 ### Schriftliche Antworten
 
