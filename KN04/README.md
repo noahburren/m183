@@ -139,9 +139,9 @@ Anschliessend erfolgt die eigentliche Datenübertragung mit einer schnellen symm
 
 # E) HTTP vs. HTTPS
 
-## Nmap
+## Nmap-Scan
 
-![Nmap](./E-Nmap.png)
+![Nmap](./E.png)
 
 ### Frage
 
@@ -157,9 +157,17 @@ Ein Angreifer erkennt bereits offene Ports, eingesetzte Softwareversionen sowie 
 
 ---
 
+## HTTP-Request mit curl
+
+![Curl](./E-Curl.png)
+
+Der Login-Request wird per HTTP an den Webserver gesendet.
+
+---
+
 ## HTTP mit tcpdump
 
-![HTTP](./E-HTTP.png)
+![HTTP](./E-username-pw.png)
 
 ### Fragen
 
@@ -181,7 +189,7 @@ Ein Angreifer müsste sich mittels **ARP-Spoofing** bzw. eines **Man-in-the-Midd
 
 ## HTTPS mit tcpdump
 
-![HTTPS](./E-HTTPS.png)
+![HTTPS](./E-hash.png)
 
 ### Fragen
 
@@ -202,8 +210,6 @@ Danach erfolgt die Datenübertragung mit symmetrischer AES-Verschlüsselung.
 IP-Adressen werden für das Routing im Netzwerk benötigt und können deshalb nicht verschlüsselt werden.
 
 Verschlüsselt wird ausschliesslich der Inhalt der Verbindung.
-
----
 
 # F) MD5-Hashes
 
