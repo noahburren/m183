@@ -536,3 +536,73 @@ Zur Verhinderung von CSRF sollten unter anderem folgende Massnahmen eingesetzt w
 # Fazit D
 
 Cross-Site Request Forgery nutzt das automatische Mitsenden von Session-Cookies durch den Browser aus. Dadurch kann ein Angreifer einen bereits angemeldeten Benutzer dazu bringen, ungewollte Aktionen auf einer Webanwendung auszuführen. Im praktischen Versuch mit WebGoat konnte eine Aktion erfolgreich über eine externe HTML-Datei ausgelöst werden. Moderne Schutzmechanismen wie CSRF-Tokens und das `SameSite`-Attribut verhindern solche Angriffe zuverlässig und gehören heute zu den wichtigsten Sicherheitsmassnahmen moderner Webanwendungen.
+
+# E) Broken Access Control – IDOR
+
+## Übersicht
+
+In diesem Teil des Kompetenznachweises wurde eine **Insecure Direct Object Reference (IDOR)** in WebGoat untersucht. Ziel war es, durch das Verändern einer Objekt-ID auf das Profil eines anderen Benutzers zuzugreifen und dieses anschliessend zu verändern. Dabei wurde deutlich, weshalb serverseitige Berechtigungsprüfungen zwingend notwendig sind.
+
+---
+
+# E1) Fremdes Profil anzeigen
+
+## Erfolgreicher Zugriff auf ein fremdes Profil
+
+![Fremdes Profil](./E1.png)
+
+Über die Funktion **View Profile** wurde zunächst das eigene Profil aufgerufen. Anschliessend wurde die Benutzer-ID im Request verändert, wodurch das Profil eines anderen Benutzers angezeigt werden konnte.
+
+Dies zeigt, dass die Anwendung lediglich der übermittelten Objekt-ID vertraute und keine ausreichende Berechtigungsprüfung durchführte.
+
+---
+
+# E2) Fremdes Profil verändern
+
+## Erfolgreiche Manipulation
+
+![Profil geändert](./E2.png)
+
+Nachdem das fremde Profil identifiziert wurde, wurde derselbe Endpunkt mit der HTTP-Methode **PUT** verwendet.
+
+Dabei wurden unter anderem die Rolle des Benutzers sowie dessen Farbe geändert.
+
+Dadurch konnte nachgewiesen werden, dass die Anwendung nicht nur unberechtigten Lesezugriff, sondern ebenfalls unberechtigte Änderungen zulässt.
+
+---
+
+# Schriftliche Antworten
+
+## Warum reicht es nicht, eine Ressource einfach «nicht zu verlinken», um sie zu schützen? (Security through Obscurity)
+
+Das Verstecken einer Ressource oder das Weglassen eines Links bietet keinen echten Schutz. Ein Angreifer kann die URL oder die Objekt-ID trotzdem erraten oder durch das Verändern von Requests finden. Sicherheit darf deshalb nicht auf «Security through Obscurity» beruhen, sondern muss durch serverseitige Zugriffsprüfungen gewährleistet werden.
+
+---
+
+## Wie hätte die Applikation den IDOR-Angriff verhindern können?
+
+Der Server muss bei jeder Anfrage überprüfen, ob der angemeldete Benutzer tatsächlich berechtigt ist, auf die angeforderte Ressource zuzugreifen oder diese zu verändern. Dabei darf nicht ausschliesslich die übermittelte ID verwendet werden. Gehört die Ressource nicht dem angemeldeten Benutzer und besitzt dieser keine entsprechenden Rechte, muss der Server den Zugriff verweigern (z. B. HTTP 403 Forbidden).
+
+---
+
+## Was ist der Unterschied zwischen horizontaler und vertikaler Privilegienerweiterung? Welche Form zeigt dieses IDOR-Beispiel?
+
+**Horizontale Privilegienerweiterung:** Ein Benutzer greift auf Daten oder Funktionen eines anderen Benutzers mit derselben Berechtigungsstufe zu.
+
+**Vertikale Privilegienerweiterung:** Ein Benutzer verschafft sich höhere Berechtigungen, beispielsweise Administratorrechte.
+
+Dieses IDOR-Beispiel zeigt eine **horizontale Privilegienerweiterung**, da ein normaler Benutzer auf das Profil eines anderen normalen Benutzers zugreifen beziehungsweise dieses verändern kann.
+
+---
+
+## Welche OWASP Top 10 Kategorie (2025) beschreibt Broken Access Control?
+
+**A01:2025 – Broken Access Control**
+
+Broken Access Control steht auf Platz 1 der OWASP Top 10, weil fehlerhafte Zugriffsprüfungen zu den häufigsten und kritischsten Sicherheitslücken in Webanwendungen gehören. Sie ermöglichen unbefugten Zugriff auf Daten oder Funktionen und können zu Datenverlust, Manipulation oder einer vollständigen Kompromittierung einer Anwendung führen.
+
+---
+
+# Fazit E
+
+Die IDOR-Übung zeigte, dass das Vertrauen in vom Client übermittelte Objekt-IDs ein erhebliches Sicherheitsrisiko darstellt. Ohne konsequente serverseitige Autorisierungsprüfungen können Angreifer auf fremde Ressourcen zugreifen oder diese verändern. Jede Anfrage muss deshalb serverseitig validiert werden, unabhängig davon, ob eine Ressource in der Benutzeroberfläche sichtbar oder verlinkt ist.
